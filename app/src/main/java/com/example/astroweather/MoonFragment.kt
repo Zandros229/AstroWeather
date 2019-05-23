@@ -84,13 +84,12 @@ class MoonFragment : Fragment() {
                             if (index >= Config.updateTime) {
                                 updateclock()
                                 update()
-                                println(index.toString() + " " + Config.updateTime + "  XDDDDD Moon")
                                 index = 0
                             }
                             try {
                                 actualTimeMoon.text = currentDate.toString()
                             } catch (e: Exception) {
-                                println("Cos sie zjebalo XDDDD")
+
                             }
                         }
                     }

@@ -86,7 +86,7 @@ class PopSettings : AppCompatDialogFragment() {
             validatedData.set(1, latitude.toDouble())
         } catch (e: Exception) {
             Log.i("ERROR POPSETTINGS", "niepoprawne dane")
-            Toast.makeText(this.context, "Podaj prawidłowe dane", Toast.LENGTH_LONG).show()
+            Toast.makeText(this.context, "Wrong Data", Toast.LENGTH_LONG).show()
             validatedData.set(0, Config.longitudeSafe)
             validatedData.set(1, Config.latitudeSafe)
         }
