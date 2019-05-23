@@ -12,51 +12,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/actualTimeMoon"
             android:textAlignment="center"
-            android:textSize="48sp"
-            android:textStyle="bold"/>
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="30dp">
-        <TextView
-                android:id="@+id/longitudeMoon"
-                android:layout_width="281dp"
-                android:layout_height="match_parent"
-                android:text=""
-                android:textAlignment="textStart"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="75dp"/>
-        <TextView
-                android:id="@+id/latitudeMoon"
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:text=""
-                android:textAlignment="viewStart"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="75dp"/>
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-        <TextView
-                android:id="@+id/dlugosc_geograficzna"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Długość geograficzna"
-                android:textAlignment="center"
-                android:textSize="14sp" android:layout_marginLeft="75dp"/>
-        <TextView
-                android:id="@+id/szerokosc_geograficzna"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Szczerokość geograficzna"
-                android:textAlignment="center"
-                android:textSize="14sp" android:layout_marginLeft="90dp"/>
-    </LinearLayout>
+            android:textSize="40sp"
+            android:textStyle="bold|italic"/>
 
     <LinearLayout
             android:orientation="horizontal"
@@ -68,16 +25,16 @@
                 android:layout_height="match_parent"
                 android:text="TextView"
                 android:textAlignment="textStart"
-                android:textSize="24sp"
-                android:textStyle="bold" android:layout_marginLeft="75dp"/>
+                android:textSize="20sp"
+                android:textStyle="italic" android:layout_marginLeft="75dp"/>
         <TextView
                 android:id="@+id/moonSet"
                 android:layout_width="301dp"
                 android:layout_height="match_parent"
                 android:text="TextView"
                 android:textAlignment="viewStart"
-                android:textSize="24sp"
-                android:textStyle="bold" android:layout_marginLeft="75dp"/>
+                android:textSize="20sp"
+                android:textStyle="italic" android:layout_marginLeft="75dp"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -87,16 +44,57 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Wchód"
+                android:text="Rise"
                 android:textAlignment="center"
                 android:textSize="14sp" android:layout_marginLeft="75dp"/>
         <TextView
                 android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Zachód"
+                android:text="Set"
                 android:textAlignment="center"
-                android:textSize="14sp" android:layout_marginLeft="60dp"/>
+                android:textSize="14sp" android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+        <TextView
+                android:id="@+id/longitudeMoon"
+                android:layout_width="281dp"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                android:layout_marginLeft="75dp" android:textStyle="italic"/>
+        <TextView
+                android:id="@+id/latitudeMoon"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_marginLeft="75dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+        <TextView
+                android:id="@+id/dlugosc_geograficzna"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="longitude"
+                android:textAlignment="center"
+                android:textSize="14sp" android:layout_marginLeft="75dp"/>
+        <TextView
+                android:id="@+id/szerokosc_geograficzna"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="latitude"
+                android:textAlignment="center"
+                android:textSize="14sp" android:layout_marginLeft="40dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -109,15 +107,15 @@
                 android:layout_height="match_parent"
                 android:text="TextView"
                 android:textAlignment="textStart"
-                android:textSize="24sp"
-                android:textStyle="bold" android:layout_marginLeft="75dp"/>
+                android:textSize="20sp"
+                android:textStyle="italic" android:layout_marginLeft="75dp"/>
         <TextView
                 android:text="nextFullMoon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/nextFullMoon"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:textAlignment="gravity"
-                android:textSize="24sp" android:layout_marginLeft="75dp"/>
+                android:textSize="20sp" android:layout_marginLeft="75dp"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -127,16 +125,16 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Najbliższy nów"
+                android:text="the nearest new moon"
                 android:textAlignment="center"
                 android:textSize="14sp" android:layout_marginLeft="75dp"/>
         <TextView
-                android:text="Najbliższa pełnia"
+                android:text="the nearest full moon pełnia"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/textViewww"
                 android:textAlignment="center"
-                android:textSize="14sp" android:layout_marginLeft="70dp"/>
+                android:textSize="14sp" android:layout_marginLeft="90dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -149,16 +147,16 @@
                 android:layout_height="match_parent"
                 android:text="TextView"
                 android:textAlignment="textStart"
-                android:textSize="24sp"
-                android:textStyle="bold" android:layout_marginLeft="75dp"/>
+                android:textSize="20sp"
+                android:textStyle="italic" android:layout_marginLeft="75dp"/>
         <TextView
                 android:id="@+id/synodicDay"
                 android:layout_width="302dp"
                 android:layout_height="match_parent"
                 android:text="TextView"
                 android:textAlignment="gravity"
-                android:textSize="24sp"
-                android:textStyle="bold" android:layout_marginLeft="75dp"/>
+                android:textSize="20sp"
+                android:textStyle="italic" android:layout_marginLeft="75dp"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -168,16 +166,16 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Faza księżyca"
+                android:text="phase of the moon"
                 android:textAlignment="center"
                 android:textSize="14sp" android:layout_marginLeft="75dp"/>
         <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Dzień miesiąca synodycznego"
-                android:textAlignment="center"
-                android:textSize="14sp" android:layout_marginLeft="180dp"/>
+                android:text="Month Day"
+                android:textAlignment="textStart"
+                android:textSize="14sp" android:layout_marginLeft="195dp"/>
     </LinearLayout>
 
 </LinearLayout>

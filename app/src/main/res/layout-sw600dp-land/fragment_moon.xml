@@ -14,23 +14,52 @@
             android:layout_height="wrap_content"
             android:id="@+id/actualTimeMoon"
             android:textAlignment="center"
-            android:textSize="48sp"
-            android:textStyle="bold"/>
+            android:textSize="40sp"
+            android:textStyle="bold|italic"/>
 
+    <TextView
+            android:id="@+id/moonRise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="italic"/>
+    <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rise"
+            android:textAlignment="center"
+            android:textSize="18sp"/>
+    <TextView
+            android:id="@+id/moonSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic"/>
+    <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set"
+            android:textAlignment="center"
+            android:textSize="18sp"/>
     <TextView
             android:id="@+id/longitudeMoon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
-
+            android:textSize="20sp"
+            android:textStyle="italic"/>
     <TextView
             android:id="@+id/dlugosc_geograficzna"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Długość geograficzna"
+            android:text="longitude"
             android:textAlignment="center"
             android:textSize="18sp"/>
 
@@ -40,48 +69,14 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textSize="20sp"
+            android:textStyle="italic"/>
 
     <TextView
             android:id="@+id/szerokosc_geograficzna"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Szczerokość geograficzna"
-            android:textAlignment="center"
-            android:textSize="18sp"/>
-
-    <TextView
-            android:id="@+id/moonRise"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wchód"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-    <TextView
-            android:id="@+id/moonSet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
-
-    <TextView
-            android:id="@+id/textView17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Zachód"
+            android:text="latitude"
             android:textAlignment="center"
             android:textSize="18sp"/>
 
@@ -91,14 +86,14 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textSize="20sp"
+            android:textStyle="italic"/>
 
     <TextView
             android:id="@+id/textView20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Najbliższy nów"
+            android:text="the nearest new moon"
             android:textAlignment="center"
             android:textSize="18sp"/>
 
@@ -106,11 +101,11 @@
             android:text="nextFullMoon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/nextFullMoon"
-            android:textStyle="bold"
+            android:textStyle="italic"
             android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
     <TextView
-            android:text="Najbliższa pełnia"
+            android:text="the nearest full moon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewww"
@@ -122,14 +117,14 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textSize="20sp"
+            android:textStyle="italic"/>
 
     <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Faza księżyca"
+            android:text="phase of the moon"
             android:textAlignment="center"
             android:textSize="18sp"/>
 
@@ -139,14 +134,14 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textSize="20sp"
+            android:textStyle="italic"/>
 
     <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dzień miesiąca synodycznego"
+            android:text="Month Day"
             android:textAlignment="center"
             android:textSize="18sp"/>
 

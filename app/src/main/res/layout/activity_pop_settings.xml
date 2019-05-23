@@ -9,9 +9,9 @@
         tools:context=".PopSettings"
         android:background="@color/colorPrimary">
     <TextView
-            android:text="Długość geograficzna"
+            android:text="longitude"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/logitudeSettings1" android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/logitudeSettings1" android:textSize="20sp"
             android:textAlignment="center"
     />
     <EditText
@@ -21,9 +21,9 @@
             android:ems="10"
             android:id="@+id/longitudeSettings"/>
     <TextView
-            android:text="Szerokość geograficzna"
+            android:text="latitude"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/latitudeSettings1" android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/latitudeSettings1" android:textSize="20sp"
             android:textAlignment="center"/>
     <EditText
             android:layout_width="match_parent"
@@ -32,9 +32,9 @@
             android:ems="10"
             android:id="@+id/latitudeSettings"/>
     <TextView
-            android:text="Częstotliwość odświeżania"
+            android:text="refresh rate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView7" android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/textView7" android:textSize="20sp"
             android:textAlignment="center"/>
     <Spinner
             android:layout_width="match_parent"
