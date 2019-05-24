@@ -118,7 +118,9 @@ class MoonFragment : Fragment() {
         var temp: List<String>? = null
         temp = astroCalculator.moonInfo.moonrise.toString().split(" ")
         moonRise.text = temp[1]
+        println(astroCalculator.moonInfo.moonset.toString().split(" ")+ " XDDDDD MoonSet")
         temp = astroCalculator.moonInfo.moonset.toString().split(" ")
+
         moonSet.text = temp[1]
         temp = astroCalculator.moonInfo.nextNewMoon.toString().split(" ")
         println(astroCalculator.moonInfo.nextNewMoon.toString() + " XDDDD")

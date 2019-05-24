@@ -23,7 +23,7 @@ class PopSettings : AppCompatDialogFragment() {
     lateinit var longitudeSettings: EditText
     lateinit var latitudeSettings: EditText
     lateinit var settingsSpinner: Spinner
-    val min = 10
+    val min = 60
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -81,10 +81,10 @@ class PopSettings : AppCompatDialogFragment() {
         var validatedData: MutableList<Double> = mutableListOf(0.0, 0.0)
         try {
             if(longitude.toDouble().absoluteValue>180||latitude.toDouble().absoluteValue>90)
+                throw Exception("Wrong Data")
             validatedData.set(0, longitude.toDouble())
             validatedData.set(1, latitude.toDouble())
         } catch (e: Exception) {
-            Log.i("ERROR POPSETTINGS", "niepoprawne dane")
             Toast.makeText(this.context, "Wrong Data", Toast.LENGTH_LONG).show()
             validatedData.set(0, Config.longitudeSafe)
             validatedData.set(1, Config.latitudeSafe)
