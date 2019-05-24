@@ -62,7 +62,6 @@ class MoonFragment : Fragment() {
         update()
 
 
-        //clock part
         val sdf = SimpleDateFormat("HH:mm:ss")
 
         Thread(Runnable {

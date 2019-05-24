@@ -81,7 +81,6 @@ class PopSettings : AppCompatDialogFragment() {
         var validatedData: MutableList<Double> = mutableListOf(0.0, 0.0)
         try {
             if(longitude.toDouble().absoluteValue>180||latitude.toDouble().absoluteValue>90)
-                throw Exception("bledne dane")
             validatedData.set(0, longitude.toDouble())
             validatedData.set(1, latitude.toDouble())
         } catch (e: Exception) {

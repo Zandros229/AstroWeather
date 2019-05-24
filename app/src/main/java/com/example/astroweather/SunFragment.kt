@@ -53,7 +53,7 @@ class SunFragment : Fragment() {
     val astroDateTime = AstroDateTime()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
         fragmentView = inflater.inflate(R.layout.fragment_sun, container, false)
 
         initTextViews()
@@ -66,12 +66,8 @@ class SunFragment : Fragment() {
         updateclock()
         update()
 
-        Log.i("AstroCalc SUN RISE", astroCalculator.sunInfo.sunrise.toString())
-        Log.i("AstroCalc SUN SET", astroCalculator.sunInfo.sunset.toString())
-        Log.i("AstroCalc CIV SUN RISE", astroCalculator.sunInfo.twilightMorning.toString())
-        Log.i("AstroCalc CIV SUN SET", astroCalculator.sunInfo.twilightEvening.toString())
 
-        //clock part
+
         val sdf = SimpleDateFormat("HH:mm:ss")
 
         Thread(Runnable {
@@ -93,13 +89,11 @@ class SunFragment : Fragment() {
                             if (index >= Config.updateTime) {
                                 updateclock()
                                 update()
-                                println(index.toString() + " " + Config.updateTime + "  XDDDDD Moon")
                                 index = 0
                             }
                             try {
                                 actualTimeSun.text = currentDate.toString()
                             } catch (e: Exception) {
-                                println("Cos sie zjebalo XDDDD")
                             }
                         }
                     }
