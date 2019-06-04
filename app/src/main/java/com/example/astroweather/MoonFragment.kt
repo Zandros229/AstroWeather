@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.astrocalculator.AstroCalculator
 import com.astrocalculator.AstroDateTime
 import kotlinx.android.synthetic.main.fragment_moon.*
@@ -146,5 +147,6 @@ class MoonFragment : Fragment() {
         astroDateTime.second = checkNotNull(model.getDate().value?.seconds)
         astroDateTime.timezoneOffset = checkNotNull(model.getDate().value?.timezoneOffset)
         astroDateTime.isDaylightSaving = true
+        Toast.makeText(fragmentView.context,"Update Astro Data",Toast.LENGTH_SHORT).show()
     }
 }

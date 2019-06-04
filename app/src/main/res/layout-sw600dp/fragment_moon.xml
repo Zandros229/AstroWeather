@@ -175,7 +175,7 @@
                 android:layout_height="match_parent"
                 android:text="Month Day"
                 android:textAlignment="textStart"
-                android:textSize="14sp" android:layout_marginLeft="195dp"/>
+                android:textSize="14sp" android:layout_marginLeft="270dp"/>
     </LinearLayout>
 
 </LinearLayout>

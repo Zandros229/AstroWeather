@@ -23,7 +23,7 @@ class PopSettings : AppCompatDialogFragment() {
     lateinit var longitudeSettings: EditText
     lateinit var latitudeSettings: EditText
     lateinit var settingsSpinner: Spinner
-    val min = 60
+    val min = 5
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -38,13 +38,9 @@ class PopSettings : AppCompatDialogFragment() {
                 var longitude: String = longitudeSettings.text.toString()
                 var latitude: String = latitudeSettings.text.toString()
                 var validatedData: List<Double> = validateData(longitude, latitude)
-                Log.i("new longitude", validatedData[0].toString())
-                Log.i("new latitude", validatedData[1].toString())
                 Config.longitudeSafe = validatedData[0]
                 Config.latitudeSafe = validatedData[1]
 
-                Log.i("config longi", Config.longitudeSafe.toString())
-                Log.i("config latit", Config.latitudeSafe.toString())
 
             })
 
@@ -52,10 +48,9 @@ class PopSettings : AppCompatDialogFragment() {
         latitudeSettings = view.findViewById(R.id.latitudeSettings)
         settingsSpinner = view.findViewById(R.id.settingsSpinner)
         var array = arrayListOf<String>("1", "2", "5", "10", "15", "30", "60")
-        // Create an ArrayAdapter using a simple spinner layout and languages array
         settingsSpinner.adapter = ArrayAdapter(view.context, R.layout.support_simple_spinner_dropdown_item, array)
-        // Set layout to use when the list of choices appear
         settingsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -70,7 +65,7 @@ class PopSettings : AppCompatDialogFragment() {
                     5 -> Config.updateTime = 30 * min
                     6 -> Config.updateTime = 60 * min
                 }
-                settingsSpinner.setSelection(position)
+
             }
         }
 
@@ -80,7 +75,7 @@ class PopSettings : AppCompatDialogFragment() {
     fun validateData(longitude: String, latitude: String): List<Double> {
         var validatedData: MutableList<Double> = mutableListOf(0.0, 0.0)
         try {
-            if(longitude.toDouble().absoluteValue>180||latitude.toDouble().absoluteValue>90)
+            if (longitude.toDouble().absoluteValue > 180 || latitude.toDouble().absoluteValue > 90)
                 throw Exception("Wrong Data")
             validatedData.set(0, longitude.toDouble())
             validatedData.set(1, latitude.toDouble())
