@@ -12,7 +12,7 @@
             android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/actualTimeMoon"
+            android:id="@+id/actualTimeSimple"
             android:textAlignment="center"
             android:textSize="40sp"
             android:textStyle="bold|italic"/>

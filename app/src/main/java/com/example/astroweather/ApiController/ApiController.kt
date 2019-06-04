@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiController  {
 
     var retrofit = Retrofit.Builder()
-        .baseUrl("http://api.openweathermap.org/data/2.5/")
+        .baseUrl("https://api.openweathermap.org/data/2.5/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

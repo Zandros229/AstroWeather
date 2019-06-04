@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface WhetherService {
     //Generate your own Api key and put it in this link
-    @GET("weather")
+    @GET("weather?")
     fun groupList(@Query("q") name: String, @Query("APIkey") key: String): Call<WeatherData>
 
 }
