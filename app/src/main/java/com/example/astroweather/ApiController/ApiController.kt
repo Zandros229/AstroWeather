@@ -5,10 +5,10 @@ import retrofit2.create
 import WeatherData
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiController {
+class ApiController  {
 
     var retrofit = Retrofit.Builder()
-        .baseUrl("api.openweathermap.org/data/2.5/")
+        .baseUrl("http://api.openweathermap.org/data/2.5/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

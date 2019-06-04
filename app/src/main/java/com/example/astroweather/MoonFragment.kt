@@ -115,16 +115,15 @@ class MoonFragment : Fragment() {
         astroCalculator = AstroCalculator(astroDateTime, astroCalculatorLocation)
         longitudeMoon.text = longitudeData.toString()
         latitudeMoon.text = latitudeData.toString()
-        println(astroDateTime.toString() + " XDDDD")
+
         var temp: List<String>? = null
         temp = astroCalculator.moonInfo.moonrise.toString().split(" ")
         moonRise.text = temp[1]
-        println(astroCalculator.moonInfo.moonset.toString().split(" ")+ " XDDDDD MoonSet")
+
         temp = astroCalculator.moonInfo.moonset.toString().split(" ")
 
         moonSet.text = temp[1]
         temp = astroCalculator.moonInfo.nextNewMoon.toString().split(" ")
-        println(astroCalculator.moonInfo.nextNewMoon.toString() + " XDDDD")
         nextNewMoon.text = temp[0]
         temp = astroCalculator.moonInfo.nextFullMoon.toString().split(" ")
         nextFullMoon.text = temp[0]

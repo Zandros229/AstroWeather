@@ -8,4 +8,8 @@ public data class Weather (
 	@SerializedName("main") val main : String,
 	@SerializedName("description") val description : String,
 	@SerializedName("icon") val icon : String
-)
+) {
+	override fun toString(): String {
+		return "Weather(id=$id, main='$main', description='$description', icon='$icon')"
+	}
+}
