@@ -18,7 +18,7 @@
             android:textStyle="bold|italic"/>
 
     <TextView
-            android:id="@+id/moonRise"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -33,7 +33,7 @@
             android:textAlignment="center"
             android:textSize="18sp"/>
     <TextView
-            android:id="@+id/moonSet"
+            android:id="@+id/windSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -48,7 +48,7 @@
             android:textAlignment="center"
             android:textSize="18sp"/>
     <TextView
-            android:id="@+id/longitudeMoon"
+            android:id="@+id/windDeg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
@@ -64,7 +64,7 @@
             android:textSize="18sp"/>
 
     <TextView
-            android:id="@+id/latitudeMoon"
+            android:id="@+id/visibility"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
@@ -81,7 +81,7 @@
             android:textSize="18sp"/>
 
     <TextView
-            android:id="@+id/nextNewMoon"
+            android:id="@+id/clouds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -100,7 +100,7 @@
     <TextView
             android:text="nextFullMoon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/nextFullMoon"
+            android:layout_height="wrap_content" android:id="@+id/humindity"
             android:textStyle="italic"
             android:textAlignment="center"
             android:textSize="20sp"/>
