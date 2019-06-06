@@ -6,7 +6,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:background="#738DAF"
-              tools:context=".MoonFragment">
+              tools:context=".SimpleData">
 
     <TextView
             android:text=""

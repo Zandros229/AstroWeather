@@ -24,6 +24,9 @@ import java.util.*
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.support.v4.content.ContextCompat.getSystemService
 import android.net.ConnectivityManager
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_simple_data.*
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
@@ -40,6 +43,8 @@ class SimpleData : Fragment() {
     lateinit var latitude: TextView
     lateinit var time: TextView
     var weatherData: WeatherData? = null
+    lateinit var unit:String
+    lateinit var pic: ImageView
 
 
     fun initTextViews() {
@@ -49,13 +54,15 @@ class SimpleData : Fragment() {
         longitude = fragmentView.findViewById(R.id.longitudesimple)
         latitude = fragmentView.findViewById(R.id.latitudesimple)
         time = fragmentView.findViewById(R.id.actualTimeSimple)
+        pic = fragmentView.findViewById(R.id.imageView)
     }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_simple_data, container, false)
-
+        unit=Config.units
 
         initTextViews()
         val sdf = SimpleDateFormat("HH:mm:ss")
@@ -70,10 +77,20 @@ class SimpleData : Fragment() {
                     if (activity != null) {
                         activity!!.runOnUiThread {
 
-                            if (index >= Config.updateTime) {
+                            if(WeatherObject.name!=Config.cityName) {
+                                update()
+                                WeatherObject.name=Config.cityName
+                            }
+                            if(unit!=Config.units){
+                                update()
+                                unit=Config.units
+                            }
+                            if (index >= Config.updateTimeWeather) {
                                 update()
                                 index = 0
                             }
+                            if(weatherData==null)
+                                update()
                             try {
                                 time.text = currentDate.toString()
                             } catch (e: Exception) {
@@ -110,8 +127,12 @@ class SimpleData : Fragment() {
     }
 
     fun updateFronSharedPreferences() {
+
+        if(Config.units=="C")
+            temp.text=toCelsius(WeatherObject.main?.temp!!).toString()
+        if(Config.units=="K")
+            temp.text=toKelvin(WeatherObject.main?.temp!!).toString()
         name.text = WeatherObject.name
-        temp.text = WeatherObject.main?.temp.toString()
         pressure.text = WeatherObject.main?.pressure.toString()
         longitude.text = WeatherObject.coord?.lon.toString()
         latitude.text = WeatherObject.coord?.lat.toString()
@@ -137,16 +158,21 @@ class SimpleData : Fragment() {
                 override fun onResponse(call: Call<WeatherData>, response: Response<WeatherData>) {
                     if (response.code() == 200) {
                         weatherData = response.body()
+                        if(Config.units=="C")
+                            weatherData?.main?.temp=toCelsius(weatherData?.main?.temp!!)
+                        if(Config.units=="K")
+                            weatherData?.main?.temp=toKelvin(weatherData?.main?.temp!!)
                         setUpObject(weatherData!!)
                         name.text = weatherData?.name
                         temp.text = weatherData?.main?.temp.toString()
                         pressure.text = weatherData?.main?.pressure.toString()
                         longitude.text = weatherData?.coord?.lon.toString()
                         latitude.text = weatherData?.coord?.lat.toString()
+                        Picasso.with(context).load("https://openweathermap.org/img/w/"+weatherData?.weather?.get(0)?.icon+".png").into(pic)
                         Config.latitudeSafe = weatherData?.coord?.lat!!
                         Config.longitudeSafe = weatherData?.coord?.lon!!
                     } else {
-                        println(response.code())
+                        println(response.code().toString()+ " Simple Fragment")
                     }
                 }
 
@@ -189,6 +215,18 @@ class SimpleData : Fragment() {
             result = 0
         }
         return false
+    }
+    fun toCelsius(kelvin: Double):Double{
+        if(kelvin>150&&kelvin<400)
+            return kelvin-273.15
+        else
+            return kelvin
+    }
+    fun toKelvin(celsius: Double): Double{
+        if(celsius<100&&celsius>-100)
+            return celsius+273.15
+        else
+            return  celsius
     }
 
 

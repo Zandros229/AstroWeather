@@ -40,6 +40,7 @@ class AdditionallyData : Fragment() {
     lateinit var clouds: TextView
     lateinit var humindity: TextView
     var weatherData: WeatherData? = null
+    lateinit var unit:String
 
 
     fun initTextViews() {
@@ -55,7 +56,7 @@ class AdditionallyData : Fragment() {
 
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_additionally_data, container, false)
-
+        unit=Config.units
 
         initTextViews()
         Thread(Runnable {
@@ -66,7 +67,25 @@ class AdditionallyData : Fragment() {
                     if (activity != null) {
                         activity!!.runOnUiThread {
 
-                            if (index >= Config.updateTime) {
+                            if(WeatherObject.name!=Config.cityName) {
+                                update()
+                                WeatherObject.name=Config.cityName
+                            }
+                            if(name.text=="TextView")
+                                update()
+                            if(unit!=Config.units){
+                                update()
+                                unit=Config.units
+                            }
+                            if(name.text!=WeatherObject.name||name.text==null) {
+                                update()
+                                name.text=WeatherObject.name
+                            }
+                            if(weatherData==null)
+                                update()
+
+
+                            if (index >= Config.updateTimeWeather) {
                                 update()
                                 index = 0
                             }
@@ -105,12 +124,14 @@ class AdditionallyData : Fragment() {
         }
     }
     fun updateFronSharedPreferences(){
+
         name.text = WeatherObject.name
         windSpeed.text = WeatherObject.wind?.speed.toString()
         windDeg.text = WeatherObject.wind?.deg.toString()
         visibility.text = WeatherObject.visibility.toString()
         clouds.text = WeatherObject.clouds.toString()
         humindity.text= WeatherObject.main?.humidity.toString()
+        name.text = WeatherObject.name
     }
 
     fun updateFromInternet(){
@@ -139,7 +160,7 @@ class AdditionallyData : Fragment() {
                         clouds.text = weatherData?.clouds.toString()
                         humindity.text= weatherData?.main?.humidity.toString()
                     } else {
-                        println(response.code())
+                        println(response.code().toString()+ "Add Fragment")
                     }
                 }
 

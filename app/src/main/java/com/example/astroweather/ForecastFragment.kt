@@ -18,24 +18,28 @@ import java.io.IOException
 import java.lang.Exception
 import ForeCastDate
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import forecastItem
 import kotlin.collections.ArrayList
 
 
 class ForecastFragment : Fragment() {
 
+
     lateinit var fragmentView: View
     lateinit var recyclerView: RecyclerView
     lateinit var myItemRecyclerViewAdapter: MyItemRecyclerViewAdapter
     var weatherForecast: ForeCastDate? = null
-    var temp=true;
+    var temp=true
+    lateinit var unit: String
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_forecast, container, false)
 
-
+        unit=Config.units
         Thread(Runnable {
             var index = 0
             while (true) {
@@ -45,7 +49,20 @@ class ForecastFragment : Fragment() {
                     if (activity != null) {
                         activity!!.runOnUiThread {
 
-                            if (index >= Config.updateTime) {
+                            if(ForecastObject.city?.name!=Config.cityName){
+                                update()
+                                weatherForecast?.city?.name=Config.cityName
+                            }
+                            if(unit!=Config.units){
+                                update()
+                                unit=Config.units
+                            }
+                            if(WeatherObject.name!=ForecastObject.city?.name)
+                                update()
+                            if(weatherForecast?.list==null)
+                                update()
+
+                            if (index >= Config.updateTimeWeather) {
                                 update()
                                 index = 0
                             }
@@ -99,10 +116,15 @@ class ForecastFragment : Fragment() {
                         if (response.code() == 200) {
                             weatherForecast = response.body()
                             weatherForecast?.list = setUpGoodData(weatherForecast?.list!!)
+                            if(Config.units=="C")
+                                weatherForecast?.list=toCelsiusList(weatherForecast?.list!!)
+                            if(Config.units=="K")
+                                weatherForecast?.list=toKelvinList(weatherForecast?.list!!)
                             if(temp){
                                 initRecyclerView()
                                 temp=false
                             }
+                            setAdapter(weatherForecast?.list!!)
                             setUpObject(weatherForecast!!)
                             updateRecyclerView()
                             if(temp){
@@ -110,8 +132,11 @@ class ForecastFragment : Fragment() {
                                 temp=false
                             }
 
-                        } else {
-                            println(response.code())
+                        }else if(response.code()==404){
+                            Toast.makeText(fragmentView.context,"Wrong City Name ",Toast.LENGTH_LONG).show()
+                        }else {
+                            println(response.code().toString()+"Recylce Fragment")
+                            updateRecyclerView()
                         }
                     }
 
@@ -119,10 +144,15 @@ class ForecastFragment : Fragment() {
     }
 
     fun updateFronSharedPreferences() {
+        if(Config.units=="C")
+            ForecastObject.list=toCelsiusList(ForecastObject.list!!)
+        if(Config.units=="K")
+            ForecastObject.list=toKelvinList(ForecastObject.list!!)
+        setAdapter(weatherForecast?.list!!)
         weatherForecast?.list=ForecastObject.list!!
         weatherForecast?.city=ForecastObject.city!!
         weatherForecast?.cnt=ForecastObject.cnt!!
-        weatherForecast?.message=ForecastObject.message!!
+        //weatherForecast?.message=ForecastObject.message!!
         weatherForecast?.cod=ForecastObject.cod!!
     }
     fun setUpGoodData(list: List<forecastItem>): List<forecastItem>{
@@ -177,6 +207,12 @@ class ForecastFragment : Fragment() {
             adapter = myItemRecyclerViewAdapter
         }
     }
+
+    fun setAdapter(results: List<forecastItem>) {
+        myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(results)
+        recyclerView.setAdapter(myItemRecyclerViewAdapter)
+        myItemRecyclerViewAdapter.notifyDataSetChanged()
+    }
     fun updateRecyclerView(){
         var i = 0
         while(i<weatherForecast?.list!!.size){
@@ -188,6 +224,41 @@ class ForecastFragment : Fragment() {
             i++
         }
     }
+    fun toCelsius(kelvin: Double):Double{
+        if(kelvin>150&&kelvin<400)
+            return kelvin-273.15
+        else
+            return kelvin
+    }
+    fun toKelvin(celsius: Double): Double{
+        if(celsius<100&&celsius>-100)
+            return celsius+273.15
+        else
+            return  celsius
+    }
+    fun toCelsiusList(list: List<forecastItem>): List<forecastItem>{
+        var temp=list
+        var i=0
+        while (i<list.size){
+            temp[i].main.temp=toCelsius(temp[i].main.temp)
+            i++
+        }
+
+        return temp
+
+    }
+    fun toKelvinList(list: List<forecastItem>): List<forecastItem>{
+
+        var i=0
+        while (i<list.size){
+            list[i].main.temp=toKelvin(list[i].main.temp)
+            i++
+        }
+
+        return list
+
+    }
+
 }
 
 

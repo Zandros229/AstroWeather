@@ -7,4 +7,5 @@ object Config{
 
     public var cityName: String ="London"
     public var units: String ="K"
+    public var updateTimeWeather: Int = 1*900
 }

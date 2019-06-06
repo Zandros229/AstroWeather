@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#738DAF"
+              tools:context=".SimpleData">
+
+    <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/actualTimeSimple"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold|italic"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/namesimple"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="italic"/>
+        <TextView
+                android:id="@+id/tempsimple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="italic"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/textView8"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
+        <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Temperature"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/longitudesimple"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="italic" android:layout_width="190dp"/>
+        <TextView
+                android:id="@+id/latitudesimple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="italic"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/dlugosc_geograficzna"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:text="longitude"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
+        <TextView
+                android:id="@+id/szerokosc_geograficzna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="latitude"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic" android:id="@+id/pressuresimple" android:layout_gravity="center_horizontal"/>
+
+    <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preasure"
+            android:textAlignment="center"
+            android:textSize="18sp" android:layout_gravity="center_horizontal"/>
+    <ImageView
+            android:src="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" android:id="@+id/imageView"/>
+
+</LinearLayout>

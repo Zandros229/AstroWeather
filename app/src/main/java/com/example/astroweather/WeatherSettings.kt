@@ -15,7 +15,7 @@ import kotlin.math.absoluteValue
 
 class WeatherSettings : AppCompatDialogFragment() {
 
-    lateinit var name: EditText
+    lateinit var nameSettings: EditText
     lateinit var spiner: Spinner
     lateinit var switch: Switch
     val min = 5
@@ -24,17 +24,27 @@ class WeatherSettings : AppCompatDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         var builder: AlertDialog.Builder = AlertDialog.Builder(activity)
         var inflater: LayoutInflater = activity!!.layoutInflater
+
         var view: View = inflater.inflate(R.layout.activity_weather_settings, null)
         builder.setView(view)
             .setNegativeButton("cancel", { dialogInterface: DialogInterface, i: Int ->
 
             })
             .setPositiveButton("ok", { dialog: DialogInterface?, which: Int ->
-                var nameTemp: String = name.text.toString()
-                Config.cityName=nameTemp
+                var nameTemp: String = nameSettings.text.toString()
+
+                if(nameTemp.length>2)
+                    Config.cityName = nameTemp
+                if(switch.isChecked){
+                    Config.units = "K"
+                    println("Zmiana na K")
+                } else {
+                    Config.units = "C"
+                    println("Zmiana na C")
+                }
             })
 
-        name = view.findViewById(R.id.NameSettings)
+        nameSettings = view.findViewById(R.id.NameSettings)
         switch = view.findViewById(R.id.switchWeatherSettings)
         spiner = view.findViewById(R.id.weatherSpinner)
         var array = arrayListOf<String>("London", "Paris", "Warsaw")
