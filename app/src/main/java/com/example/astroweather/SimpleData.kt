@@ -48,7 +48,7 @@ class SimpleData : Fragment() {
         pressure = fragmentView.findViewById(R.id.pressuresimple)
         longitude = fragmentView.findViewById(R.id.longitudesimple)
         latitude = fragmentView.findViewById(R.id.latitudesimple)
-        time=fragmentView.findViewById(R.id.actualTimeSimple)
+        time = fragmentView.findViewById(R.id.actualTimeSimple)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -82,7 +82,7 @@ class SimpleData : Fragment() {
                         }
                     }
                 } catch (e: Exception) {
-                    if(activity != null){
+                    if (activity != null) {
                         activity!!.finish()
                     }
                 }
@@ -99,31 +99,31 @@ class SimpleData : Fragment() {
 
     }
 
-    fun update(){
-        if(isOnline()) {
+    fun update() {
+        if (isOnline()) {
             updateFromInternet()
-            Toast.makeText(this.context,"Updated form Internet",Toast.LENGTH_LONG).show()
-        }
-        else {
+            Toast.makeText(this.context, "Updated form Internet", Toast.LENGTH_LONG).show()
+        } else {
             updateFronSharedPreferences()
-            Toast.makeText(this.context,"Updated form Shared Preferences",Toast.LENGTH_LONG).show()
+            Toast.makeText(this.context, "Updated form Shared Preferences", Toast.LENGTH_LONG).show()
         }
     }
-    fun updateFronSharedPreferences(){
+
+    fun updateFronSharedPreferences() {
         name.text = WeatherObject.name
         temp.text = WeatherObject.main?.temp.toString()
         pressure.text = WeatherObject.main?.pressure.toString()
         longitude.text = WeatherObject.coord?.lon.toString()
         latitude.text = WeatherObject.coord?.lat.toString()
-        Config.latitudeSafe=WeatherObject.coord?.lat!!
-        Config.longitudeSafe=WeatherObject.coord?.lon!!
+        Config.latitudeSafe = WeatherObject.coord?.lat!!
+        Config.longitudeSafe = WeatherObject.coord?.lon!!
     }
 
-    fun updateFromInternet(){
+    fun updateFromInternet() {
         var retrofit = Retrofit.Builder()
-        .baseUrl("https://api.openweathermap.org/data/2.5/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
         var whetherService = retrofit.create(WhetherService::class.java)
 
@@ -143,28 +143,30 @@ class SimpleData : Fragment() {
                         pressure.text = weatherData?.main?.pressure.toString()
                         longitude.text = weatherData?.coord?.lon.toString()
                         latitude.text = weatherData?.coord?.lat.toString()
-                        Config.latitudeSafe=weatherData?.coord?.lat!!
-                        Config.longitudeSafe=weatherData?.coord?.lon!!
+                        Config.latitudeSafe = weatherData?.coord?.lat!!
+                        Config.longitudeSafe = weatherData?.coord?.lon!!
                     } else {
                         println(response.code())
                     }
                 }
 
-            })}
-    private fun setUpObject(weatherobject: WeatherData){
-        WeatherObject.base=weatherobject.base
-        WeatherObject.clouds=weatherobject.clouds
-        WeatherObject.cod=weatherobject.cod
-        WeatherObject.coord=weatherobject.coord
-        WeatherObject.dt=weatherobject.dt
-        WeatherObject.id=weatherobject.id
-        WeatherObject.main=weatherobject.main
-        WeatherObject.name=weatherobject.name
-        WeatherObject.sys=weatherobject.sys
-        WeatherObject.timezone=weatherobject.timezone
-        WeatherObject.visibility=weatherobject.visibility
-        WeatherObject.weather=weatherobject.weather
-        WeatherObject.wind=weatherobject.wind
+            })
+    }
+
+    private fun setUpObject(weatherobject: WeatherData) {
+        WeatherObject.base = weatherobject.base
+        WeatherObject.clouds = weatherobject.clouds
+        WeatherObject.cod = weatherobject.cod
+        WeatherObject.coord = weatherobject.coord
+        WeatherObject.dt = weatherobject.dt
+        WeatherObject.id = weatherobject.id
+        WeatherObject.main = weatherobject.main
+        WeatherObject.name = weatherobject.name
+        WeatherObject.sys = weatherobject.sys
+        WeatherObject.timezone = weatherobject.timezone
+        WeatherObject.visibility = weatherobject.visibility
+        WeatherObject.weather = weatherobject.weather
+        WeatherObject.wind = weatherobject.wind
     }
 
     fun isOnline(): Boolean {
@@ -179,6 +181,13 @@ class SimpleData : Fragment() {
             e.printStackTrace()
         }
 
+
+        var result = 2
+        if (result > 0) {
+            result = 100
+        } else {
+            result = 0
+        }
         return false
     }
 
