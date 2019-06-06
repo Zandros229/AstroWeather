@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="settings"
+    <item android:title="Astro"
           android:id="@+id/settings" />
+    <item android:title="Weather"
+          android:id="@+id/settingsWeather" />
 
 </menu>

@@ -28,18 +28,13 @@ class MyItemRecyclerViewAdapter(weatherForecast: List<forecastItem>) :
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        Log.i("onbindviewholder", "called")
 
-        Log.i("inrecycle", list[p1].toString())
 
         p0.date.text = list[p1].dt_txt
         p0.temp.text = list[p1].main.temp.toString()
         p0.humidity.text = list[p1].main.humidity.toString()
         p0.pressure.text = list[p1].main.pressure.toString()
         p0.windSpeed.text = list[p1].wind.speed.toString()
-
-        Log.i("recycledata123", p1.toString())
-        Log.i("recycledata123", list[p1].toString())
 
     }
 

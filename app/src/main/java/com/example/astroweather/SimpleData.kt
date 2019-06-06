@@ -128,7 +128,7 @@ class SimpleData : Fragment() {
         var whetherService = retrofit.create(WhetherService::class.java)
 
         var call =
-            whetherService.groupList("London", ApiConfig.key).enqueue(object : Callback<WeatherData> {
+            whetherService.groupList(Config.cityName, ApiConfig.key).enqueue(object : Callback<WeatherData> {
                 override fun onFailure(call: Call<WeatherData>, t: Throwable) {
                     println("cos nie dziala")
                     println(t.message)

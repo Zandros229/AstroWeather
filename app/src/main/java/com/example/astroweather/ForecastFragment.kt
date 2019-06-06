@@ -18,6 +18,8 @@ import java.io.IOException
 import java.lang.Exception
 import ForeCastDate
 import android.support.v7.widget.LinearLayoutManager
+import forecastItem
+import kotlin.collections.ArrayList
 
 
 class ForecastFragment : Fragment() {
@@ -70,6 +72,8 @@ class ForecastFragment : Fragment() {
     private fun update() {
         if (isOnline()) {
             updateFromInternet()
+
+
         } else {
             updateFronSharedPreferences()
         }
@@ -84,7 +88,7 @@ class ForecastFragment : Fragment() {
         var whetherService = retrofit.create(WhetherService::class.java)
 
         var call =
-            whetherService.getForeCast("London", ApiConfig.key, 5)
+            whetherService.getForeCast(Config.cityName, ApiConfig.key, 40)
                 .enqueue(object : Callback<ForeCastDate> {
                     override fun onFailure(call: Call<ForeCastDate>, t: Throwable) {
                         println("cos nie dziala")
@@ -94,12 +98,18 @@ class ForecastFragment : Fragment() {
                     override fun onResponse(call: Call<ForeCastDate>, response: Response<ForeCastDate>) {
                         if (response.code() == 200) {
                             weatherForecast = response.body()
-                            setUpObject(weatherForecast!!)
+                            weatherForecast?.list = setUpGoodData(weatherForecast?.list!!)
                             if(temp){
                                 initRecyclerView()
                                 temp=false
                             }
+                            setUpObject(weatherForecast!!)
                             updateRecyclerView()
+                            if(temp){
+                                initRecyclerView()
+                                temp=false
+                            }
+
                         } else {
                             println(response.code())
                         }
@@ -109,6 +119,21 @@ class ForecastFragment : Fragment() {
     }
 
     fun updateFronSharedPreferences() {
+        weatherForecast?.list=ForecastObject.list!!
+        weatherForecast?.city=ForecastObject.city!!
+        weatherForecast?.cnt=ForecastObject.cnt!!
+        weatherForecast?.message=ForecastObject.message!!
+        weatherForecast?.cod=ForecastObject.cod!!
+    }
+    fun setUpGoodData(list: List<forecastItem>): List<forecastItem>{
+        var templist :List<forecastItem> = ArrayList<forecastItem>()
+        var i=8
+        while (i<list.size){
+            templist+=list[i]
+            i+=8
+        }
+        templist+=list[list.size-1]
+        return templist
 
     }
 
