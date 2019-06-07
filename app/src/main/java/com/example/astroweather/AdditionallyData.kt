@@ -116,11 +116,11 @@ class AdditionallyData : Fragment() {
     fun update(){
         if(isOnline()) {
             updateFromInternet()
-            Toast.makeText(this.context,"Updated form Internet",Toast.LENGTH_LONG).show()
+            //Toast.makeText(this.context,"Updated form Internet",Toast.LENGTH_LONG).show()
         }
         else {
             updateFronSharedPreferences()
-            Toast.makeText(this.context,"Updated form Shared Preferences",Toast.LENGTH_LONG).show()
+            //Toast.makeText(this.context,"Updated form Shared Preferences",Toast.LENGTH_LONG).show()
         }
     }
     fun updateFronSharedPreferences(){

@@ -2,6 +2,7 @@ package com.example.astroweather
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import java.io.IOException
 import java.lang.Exception
 import kotlin.math.absoluteValue
 
@@ -41,6 +43,9 @@ class WeatherSettings : AppCompatDialogFragment() {
                 } else {
                     Config.units = "C"
                     println("Zmiana na C")
+                }
+                if(!isOnline()){
+                    Toast.makeText(this.context,"Connect to interent to get weather info",Toast.LENGTH_LONG).show()
                 }
             })
 
@@ -82,6 +87,27 @@ class WeatherSettings : AppCompatDialogFragment() {
             validatedData.set(1, Config.latitudeSafe)
         }
         return validatedData
+    }
+    fun isOnline(): Boolean {
+        val runtime = Runtime.getRuntime()
+        try {
+            val ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8")
+            val exitValue = ipProcess.waitFor()
+            return exitValue == 0
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
+
+
+        var result = 2
+        if (result > 0) {
+            result = 100
+        } else {
+            result = 0
+        }
+        return false
     }
 
 }

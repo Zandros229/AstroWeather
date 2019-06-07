@@ -204,8 +204,10 @@ class ForecastFragment : Fragment() {
 
     fun initRecyclerView() {
 
-
-        myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(ForecastObject?.list!!)
+        if(ForecastObject.list==null)
+            myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(weatherForecast?.list!!)
+        else
+            myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(ForecastObject?.list!!)
         recyclerView = fragmentView.findViewById<RecyclerView>(R.id.includedList).apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this.context)

@@ -78,13 +78,16 @@ class SimpleData : Fragment() {
                         activity!!.runOnUiThread {
 
                             if(WeatherObject.name!=Config.cityName) {
+                                println(Config.cityName+" WeatherObject.name!=Config.cityName "  +" "+ WeatherObject.name)
                                 update()
-                                //WeatherObject.name=Config.cityName
+
                             }
                             if(name.text!=Config.cityName) {
+                                println("name.text!=Config.cityName")
                                 update()
                             }
                             if(unit!=Config.units){
+                                println("unit!=Config.units")
                                 update()
                                 unit=Config.units
                             }
@@ -92,8 +95,10 @@ class SimpleData : Fragment() {
                                 update()
                                 index = 0
                             }
-                            if(weatherData==null)
-                                update()
+//                            if(weatherData==null) {
+//                                println("WeatherObject.name!=Config.cityName")
+//                                update()
+//                            }
                             try {
                                 time.text = currentDate.toString()
                             } catch (e: Exception) {
@@ -135,12 +140,15 @@ class SimpleData : Fragment() {
             temp.text=toCelsius(WeatherObject.main?.temp!!).toString()
         if(Config.units=="K")
             temp.text=toKelvin(WeatherObject.main?.temp!!).toString()
+        println(WeatherObject.name+" 00 "+Config.cityName)
+        Config.cityName=WeatherObject.name!!
+
         name.text = WeatherObject.name
         pressure.text = WeatherObject.main?.pressure.toString()
         longitude.text = WeatherObject.coord?.lon.toString()
         latitude.text = WeatherObject.coord?.lat.toString()
         pic.setImageDrawable(resources.getDrawable(R.drawable.no_internet))
-        Config.cityName=WeatherObject.name!!
+        //Config.cityName=WeatherObject.name!!
         Config.latitudeSafe = WeatherObject.coord?.lat!!
         Config.longitudeSafe = WeatherObject.coord?.lon!!
     }
