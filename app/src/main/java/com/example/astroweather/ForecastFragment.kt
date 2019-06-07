@@ -51,7 +51,7 @@ class ForecastFragment : Fragment() {
 
                             if(ForecastObject.city?.name!=Config.cityName){
                                 update()
-                                weatherForecast?.city?.name=Config.cityName
+                                //weatherForecast?.city?.name=Config.cityName
                             }
                             if(unit!=Config.units){
                                 update()
@@ -133,6 +133,7 @@ class ForecastFragment : Fragment() {
                             }
 
                         }else if(response.code()==404){
+                            Config.cityName="London"
                             Toast.makeText(fragmentView.context,"Wrong City Name ",Toast.LENGTH_LONG).show()
                         }else {
                             println(response.code().toString()+"Recylce Fragment")
@@ -148,8 +149,12 @@ class ForecastFragment : Fragment() {
             ForecastObject.list=toCelsiusList(ForecastObject.list!!)
         if(Config.units=="K")
             ForecastObject.list=toKelvinList(ForecastObject.list!!)
-        setAdapter(weatherForecast?.list!!)
         weatherForecast?.list=ForecastObject.list!!
+        if(temp){
+            initRecyclerView()
+            temp=false
+        }
+        setAdapter(ForecastObject?.list!!)
         weatherForecast?.city=ForecastObject.city!!
         weatherForecast?.cnt=ForecastObject.cnt!!
         //weatherForecast?.message=ForecastObject.message!!
@@ -200,7 +205,7 @@ class ForecastFragment : Fragment() {
     fun initRecyclerView() {
 
 
-        myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(weatherForecast?.list!!)
+        myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(ForecastObject?.list!!)
         recyclerView = fragmentView.findViewById<RecyclerView>(R.id.includedList).apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this.context)

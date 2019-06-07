@@ -6,19 +6,19 @@ import com.google.gson.annotations.SerializedName
 public data class WeatherData (
 
 
-	@SerializedName("coord") val coord : Coord,
-	@SerializedName("weather") val weather : List<Weather>,
-	@SerializedName("base") val base : String,
-	@SerializedName("main") val main : Main,
-	@SerializedName("visibility") val visibility : Int,
-	@SerializedName("wind") val wind : Wind,
-	@SerializedName("clouds") val clouds : Clouds,
-	@SerializedName("dt") val dt : Int,
-	@SerializedName("sys") val sys : Sys,
-	@SerializedName("timezone") val timezone : Int,
-	@SerializedName("id") val id : Int,
-	@SerializedName("name") val name : String,
-	@SerializedName("cod") val cod : Int
+    @SerializedName("coord") var coord : Coord,
+    @SerializedName("weather") var weather : List<Weather>,
+    @SerializedName("base") var base : String,
+    @SerializedName("main") var main : Main,
+    @SerializedName("visibility") var visibility : Int,
+    @SerializedName("wind") var wind : Wind,
+    @SerializedName("clouds") var clouds : Clouds,
+    @SerializedName("dt") var dt : Int,
+    @SerializedName("sys") var sys : Sys,
+    @SerializedName("timezone") var timezone : Int,
+    @SerializedName("id") var id : Int,
+    @SerializedName("name") var name : String,
+    @SerializedName("cod") var cod : Int
 
 ) {
 	override fun toString(): String {

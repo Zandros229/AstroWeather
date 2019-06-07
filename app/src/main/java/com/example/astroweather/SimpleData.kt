@@ -79,7 +79,7 @@ class SimpleData : Fragment() {
 
                             if(WeatherObject.name!=Config.cityName) {
                                 update()
-                                WeatherObject.name=Config.cityName
+                                //WeatherObject.name=Config.cityName
                             }
                             if(name.text!=Config.cityName) {
                                 update()
@@ -139,6 +139,8 @@ class SimpleData : Fragment() {
         pressure.text = WeatherObject.main?.pressure.toString()
         longitude.text = WeatherObject.coord?.lon.toString()
         latitude.text = WeatherObject.coord?.lat.toString()
+        pic.setImageDrawable(resources.getDrawable(R.drawable.no_internet))
+        Config.cityName=WeatherObject.name!!
         Config.latitudeSafe = WeatherObject.coord?.lat!!
         Config.longitudeSafe = WeatherObject.coord?.lon!!
     }

@@ -69,7 +69,7 @@ class AdditionallyData : Fragment() {
 
                             if(WeatherObject.name!=Config.cityName) {
                                 update()
-                                WeatherObject.name=Config.cityName
+                                //WeatherObject.name=Config.cityName
                             }
                             if(name.text=="TextView")
                                 update()
@@ -132,6 +132,7 @@ class AdditionallyData : Fragment() {
         clouds.text = WeatherObject.clouds.toString()
         humindity.text= WeatherObject.main?.humidity.toString()
         name.text = WeatherObject.name
+        Config.cityName=WeatherObject.name!!
     }
 
     fun updateFromInternet(){
