@@ -81,6 +81,9 @@ class SimpleData : Fragment() {
                                 update()
                                 WeatherObject.name=Config.cityName
                             }
+                            if(name.text!=Config.cityName) {
+                                update()
+                            }
                             if(unit!=Config.units){
                                 update()
                                 unit=Config.units
