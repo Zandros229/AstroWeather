@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/switchWeatherSettings"
             android:layout_gravity="center_horizontal" android:textOn="K" android:textOff="C" tools:checked="false"
-            android:checked="false" android:switchMinWidth="70dp"/>
+            android:checked="false" android:switchMinWidth="70dp" android:showText="true"
+    />
 
 </android.support.v7.widget.LinearLayoutCompat>
