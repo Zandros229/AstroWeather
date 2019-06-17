@@ -1,6 +1,7 @@
 package com.example.astroweather.DataBaseModel
 
 
+
 import android.arch.persistence.room.*
 import java.util.List;
 

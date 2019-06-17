@@ -1,6 +1,7 @@
 package com.example.astroweather
 
 
+import android.arch.persistence.room.Room
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -22,6 +23,8 @@ import com.jjoe64.graphview.ValueDependentColor
 import com.example.astroweather.DataBaseModel.AppDatabase
 import com.example.astroweather.DataBaseModel.ItemDAO
 import com.example.astroweather.DataBaseModel.DataBaseItem
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter
+import java.util.*
 
 
 class Chart : Fragment() {
@@ -31,7 +34,7 @@ class Chart : Fragment() {
     lateinit var graph: GraphView
     var started = false
     var temp = 0.0
-   // lateinit var database: AppDatabase
+    //lateinit var database: AppDatabase
 
     private fun init() {
         graph = fragmentView.findViewById(R.id.graph)
@@ -101,28 +104,40 @@ class Chart : Fragment() {
     private fun update() {
         lateinit var list: Array<forecastItem>
         val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DATE, 1)
+        val d0 = calendar.getTime()
+        calendar.add(Calendar.DATE, 1)
+        val d1 = calendar.getTime()
+        calendar.add(Calendar.DATE, 1)
+        val d2 = calendar.getTime()
+        calendar.add(Calendar.DATE, 1)
+        val d3 = calendar.getTime()
+        calendar.add(Calendar.DATE, 1)
+        val d4 = calendar.getTime()
+
         var series: BarGraphSeries<DataPoint>
         temp = ForecastObject?.list?.get(0)?.main?.temp!!
         series = BarGraphSeries<DataPoint>(
             arrayOf<DataPoint>(
                 DataPoint(
-                    0.toDouble(),
+                    d0,
                     ForecastObject?.list?.get(0)?.main?.temp!!
                 ),
                 DataPoint(
-                    1.toDouble(),
+                    d1,
                     ForecastObject?.list?.get(1)?.main?.temp!!
                 ),
                 DataPoint(
-                    2.toDouble(),
+                    d2,
                     ForecastObject?.list?.get(2)?.main?.temp!!
                 ),
                 DataPoint(
-                    3.toDouble(),
+                    d3,
                     ForecastObject?.list?.get(3)?.main?.temp!!
                 ),
                 DataPoint(
-                    4.toDouble(),
+                    d4,
                     ForecastObject?.list?.get(4)?.main?.temp!!
                 )
             )
@@ -151,6 +166,18 @@ class Chart : Fragment() {
         series.setDrawValuesOnTop(true)
         series.setValuesOnTopColor(Color.BLUE)
         graph.addSeries(series)
+
+        graph.getGridLabelRenderer().setLabelFormatter(DateAsXAxisLabelFormatter(getActivity()))
+        graph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
+
+// set manual x bounds to have nice steps
+//        graph.getViewport().setMinX(d0.time.toDouble())
+//        graph.getViewport().setMaxX(d4.time.toDouble())
+        graph.getViewport().setXAxisBoundsManual(true)
+
+// as we use dates as labels, the human rounding to nice readable numbers
+// is not necessary
+        graph.getGridLabelRenderer().setHumanRounding(false)
     }
 
     private fun updateDB() {
