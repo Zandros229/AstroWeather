@@ -13,5 +13,6 @@ interface WhetherService {
     fun groupList(@Query("q") name: String, @Query("APIkey") key: String): Call<WeatherData>
     @GET("forecast?")
     fun getForeCast(@Query("q") name: String, @Query("APIkey") key: String,  @Query("cnt") cnt: Int): Call<ForeCastDate>
+    
 
 }

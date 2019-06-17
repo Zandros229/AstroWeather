@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
 
         viewPager = findViewById(R.id.pager)
-        viewPager.offscreenPageLimit = 4
+        viewPager.offscreenPageLimit = 5
         fragmentColleactionAdapter = FragmentCollectionAdapter(supportFragmentManager)
         viewPager.adapter = fragmentColleactionAdapter
 

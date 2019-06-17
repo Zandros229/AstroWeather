@@ -39,4 +39,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation group: 'joda-time', name: 'joda-time', version: '2.3'
     implementation group:'com.squareup.picasso', name:'picasso', version:'2.5.0'
+    implementation 'com.jjoe64:graphview:4.2.2'
+
+    implementation  "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor  "android.arch.persistence.room:compiler:1.0.0"
 }
