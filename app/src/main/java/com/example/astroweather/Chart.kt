@@ -25,6 +25,8 @@ import com.example.astroweather.DataBaseModel.ItemDAO
 import com.example.astroweather.DataBaseModel.DataBaseItem
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter
 import java.util.*
+import com.jjoe64.graphview.DefaultLabelFormatter
+import com.jjoe64.graphview.series.LineGraphSeries
 
 
 class Chart : Fragment() {
@@ -116,9 +118,9 @@ class Chart : Fragment() {
         calendar.add(Calendar.DATE, 1)
         val d4 = calendar.getTime()
 
-        var series: BarGraphSeries<DataPoint>
+        var series: LineGraphSeries<DataPoint>
         temp = ForecastObject?.list?.get(0)?.main?.temp!!
-        series = BarGraphSeries<DataPoint>(
+        series = LineGraphSeries <DataPoint>(
             arrayOf<DataPoint>(
                 DataPoint(
                     d0,
@@ -150,8 +152,7 @@ class Chart : Fragment() {
         //series.setSpacing(50)
         // set manual X bounds
 
-        series.valueDependentColor =
-            ValueDependentColor { data -> Color.rgb(data.x.toInt() * 255 / 4, Math.abs(data.y * 255 / 6).toInt(), 100) }
+        //series.valueDependentColor = ValueDependentColor { data -> Color.rgb(data.x.toInt() * 255 / 4, Math.abs(data.y * 255 / 6).toInt(), 100) }
 
         graph.getViewport().setYAxisBoundsManual(true)
         if (Config.units == "K") {
@@ -163,8 +164,8 @@ class Chart : Fragment() {
             graph.getViewport().setMaxY(40.0)
         }
         // draw values on top
-        series.setDrawValuesOnTop(true)
-        series.setValuesOnTopColor(Color.BLUE)
+        //series.setDrawValuesOnTop(true)
+        //series.setValuesOnTopColor(Color.BLUE)
         graph.addSeries(series)
 
         graph.getGridLabelRenderer().setLabelFormatter(DateAsXAxisLabelFormatter(getActivity()))
@@ -178,6 +179,9 @@ class Chart : Fragment() {
 // as we use dates as labels, the human rounding to nice readable numbers
 // is not necessary
         graph.getGridLabelRenderer().setHumanRounding(false)
+        series.setDrawDataPoints(true)
+        series.setDataPointsRadius(10.toFloat())
+        series.setThickness(8)
     }
 
     private fun updateDB() {
